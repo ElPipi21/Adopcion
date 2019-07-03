@@ -134,7 +134,6 @@ public class FragmentListarMascotas extends Fragment {
         listaMascotas.add(new Mascota("Volador","Ave","Trujillo",R.drawable.lorito2, "Es un pajarito bonito"));
         listaMascotas.add(new Mascota("Paco","Ave","Trujillo",R.drawable.lorito3, "Es un pajarito bonito"));
 
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
