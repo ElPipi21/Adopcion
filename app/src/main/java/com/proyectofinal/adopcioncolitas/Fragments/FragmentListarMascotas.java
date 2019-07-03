@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.IccOpenLogicalChannelResponse;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.proyectofinal.adopcioncolitas.Adapters.MascotasAdapter;
 import com.proyectofinal.adopcioncolitas.Clases.Mascota;
 import com.proyectofinal.adopcioncolitas.R;
+import com.proyectofinal.adopcioncolitas.interfaces.IComunicaFragments;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,7 @@ public class FragmentListarMascotas extends Fragment {
     ArrayList<Mascota> listaMascotas;
 
     Activity activity;
+    IComunicaFragments interfaceComunicaFragments;
 
 
     public FragmentListarMascotas() {
@@ -97,6 +100,7 @@ public class FragmentListarMascotas extends Fragment {
                         +listaMascotas.get(recyclerMascotas
                         .getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
 
+                interfaceComunicaFragments.enviarMascota(listaMascotas.get(recyclerMascotas.getChildAdapterPosition(view)));
 
             }
         });
@@ -105,7 +109,12 @@ public class FragmentListarMascotas extends Fragment {
 
     private void llenarLista() {
 
-
+        listaMascotas.add(new Mascota(getString(R.string.perrito_nombre),
+                getString(R.string.perrito_especie),
+                getString(R.string.perrito_ciudad),
+                R.drawable.perrito,
+                getString(R.string.perrito_detalle)));
+        /*
         listaMascotas.add(new Mascota("Firulais","Perro","Trujillo", R.drawable.perrito, "Es un perrro bonito"));
         listaMascotas.add(new Mascota("Perales","Perro","Lima",R.drawable.perrito2, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Chistris","Perro","Lambayeque",R.drawable.perrito3, "Es un perro bonito"));
@@ -119,6 +128,7 @@ public class FragmentListarMascotas extends Fragment {
         listaMascotas.add(new Mascota("Piolin","Ave","Trujillo",R.drawable.lorito, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Volador","Ave","Trujillo",R.drawable.lorito2, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Paco","Ave","Trujillo",R.drawable.lorito3, "Es un perro bonito"));
+        */
 
     }
 
@@ -132,6 +142,18 @@ public class FragmentListarMascotas extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        if(context instanceof Activity){
+            this.activity=(Activity) context;
+            interfaceComunicaFragments=(IComunicaFragments) this.activity;
+        }
+
+        if(context instanceof OnFragmentInteractionListener){
+            mListener = (OnFragmentInteractionListener) context;
+        }else{
+            throw new RuntimeException(context.toString()
+            + "must implement OnFragmentInteractionListener");
+        }
 
     }
 

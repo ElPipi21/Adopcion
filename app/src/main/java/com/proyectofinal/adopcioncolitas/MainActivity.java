@@ -23,6 +23,7 @@ import com.proyectofinal.adopcioncolitas.Fragments.FragmentDetalleMascota;
 import com.proyectofinal.adopcioncolitas.Fragments.FragmentDonaciones;
 import com.proyectofinal.adopcioncolitas.Fragments.FragmentFavoritos;
 import com.proyectofinal.adopcioncolitas.Fragments.FragmentListarMascotas;
+import com.proyectofinal.adopcioncolitas.interfaces.IComunicaFragments;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity
         FragmentListarMascotas.OnFragmentInteractionListener,
         FragmentFavoritos.OnFragmentInteractionListener,
         FragmentContenedor.OnFragmentInteractionListener,
-        FragmentDetalleMascota.OnFragmentInteractionListener
+        FragmentDetalleMascota.OnFragmentInteractionListener,
+        IComunicaFragments
          {
 
     FragmentListarMascotas listaFragment;
@@ -154,6 +156,13 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-
-}
+     @Override
+     public void enviarMascota(Mascota mascota) {
+         detalleFragment = new FragmentDetalleMascota();
+         Bundle bundleEnvio= new Bundle();
+         bundleEnvio.putSerializable("objeto", mascota);
+         detalleFragment.setArguments(bundleEnvio);
+         //cargar el fragment en el activity
+         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, detalleFragment).addToBackStack(null).commit();
+     }
+         }

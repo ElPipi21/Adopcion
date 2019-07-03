@@ -76,6 +76,15 @@ public class FragmentDetalleMascota extends Fragment {
         textDescripcion= vista.findViewById(R.id.descripcionId);
         imagenDetalle = vista.findViewById(R.id.imagenDetalleId);
 
+        Bundle objetoMascota=getArguments();
+        Mascota mascota= null;
+
+        if(objetoMascota!=null){
+            mascota=(Mascota) objetoMascota.getSerializable("objeto");
+            imagenDetalle.setImageResource(mascota.getImagenId());
+            textDescripcion.setText(mascota.getDetalle());
+        }
+
 
         return vista;
     }
