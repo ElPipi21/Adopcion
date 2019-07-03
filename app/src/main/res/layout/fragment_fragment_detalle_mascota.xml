@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/descripcionId"
         android:layout_width="499dp"
-        android:layout_height="419dp"
+        android:layout_height="278dp"
         android:text="Descripcion" />
 
     <LinearLayout

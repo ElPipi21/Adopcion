@@ -62,7 +62,7 @@ public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.Mascot
 
         public MascotaViewHolder( View itemView) {
             super(itemView);
-            txtNombre= itemView.findViewById(R.id.txtNombre);
+            txtNombre= itemView.findViewById(R.id.txtNombres);
             txtCiudad= itemView.findViewById(R.id.txtCiudad);
             txtEspecie=itemView.findViewById(R.id.txtEspecie);
             foto= itemView.findViewById(R.id.idimagen);

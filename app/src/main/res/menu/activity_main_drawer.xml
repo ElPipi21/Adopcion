@@ -19,10 +19,10 @@
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Herramientas" />
+            android:title="Formulario de Adopcion" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Opciones Especiales">
         <menu>
             <item
                 android:id="@+id/nav_share"

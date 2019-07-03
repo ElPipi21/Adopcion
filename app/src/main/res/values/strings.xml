@@ -14,7 +14,6 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
 
     <!-- PERRITO 1 FIRULAIS-->
     <string name="perrito_nombre">Firulais</string>
@@ -28,9 +27,6 @@
     <string name="lorito_especie">Ave</string>
     <string name="lorito_ciudad">Trujillo</string>
     <string name="lorito_detalle">Es un lorito muy bonito</string>
-
-
-
 
 
 </resources>

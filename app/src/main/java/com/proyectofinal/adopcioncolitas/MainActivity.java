@@ -3,18 +3,17 @@ package com.proyectofinal.adopcioncolitas;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.proyectofinal.adopcioncolitas.Clases.Mascota;
 import com.proyectofinal.adopcioncolitas.Clases.Utilidades;
@@ -23,7 +22,9 @@ import com.proyectofinal.adopcioncolitas.Fragments.FragmentDetalleMascota;
 import com.proyectofinal.adopcioncolitas.Fragments.FragmentDonaciones;
 import com.proyectofinal.adopcioncolitas.Fragments.FragmentFavoritos;
 import com.proyectofinal.adopcioncolitas.Fragments.FragmentListarMascotas;
+import com.proyectofinal.adopcioncolitas.Fragments.FragmentLlenarFormulario;
 import com.proyectofinal.adopcioncolitas.interfaces.IComunicaFragments;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity
         FragmentFavoritos.OnFragmentInteractionListener,
         FragmentContenedor.OnFragmentInteractionListener,
         FragmentDetalleMascota.OnFragmentInteractionListener,
-        IComunicaFragments
+        IComunicaFragments,
+        FragmentLlenarFormulario.OnFragmentInteractionListener
+
          {
 
     FragmentListarMascotas listaFragment;
@@ -70,10 +73,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
 
 
     }
@@ -131,6 +130,8 @@ public class MainActivity extends AppCompatActivity
             fragmentSeleccionado=true;
 
         } else if (id == R.id.nav_tools) {
+            miFragment = new FragmentLlenarFormulario();
+            fragmentSeleccionado=true;
 
         } else if (id == R.id.nav_share) {
             miFragment = new FragmentContenedor();
@@ -165,4 +166,9 @@ public class MainActivity extends AppCompatActivity
          //cargar el fragment en el activity
          getSupportFragmentManager().beginTransaction().replace(R.id.content_main, detalleFragment).addToBackStack(null).commit();
      }
-         }
+
+
+
+
+
+     }
