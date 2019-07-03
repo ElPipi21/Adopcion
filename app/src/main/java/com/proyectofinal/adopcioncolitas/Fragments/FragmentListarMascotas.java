@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telephony.IccOpenLogicalChannelResponse;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,26 +108,32 @@ public class FragmentListarMascotas extends Fragment {
 
     private void llenarLista() {
 
-        listaMascotas.add(new Mascota(getString(R.string.perrito_nombre),
-                getString(R.string.perrito_especie),
-                getString(R.string.perrito_ciudad),
-                R.drawable.perrito,
-                getString(R.string.perrito_detalle)));
+        /////como debería ser
         /*
+        listaMascotas.add(new Mascota(
+                getString(R.string.perrito_nombre),
+                        getString(R.string.perrito_especie),
+                        getString(R.string.perrito_ciudad),
+                        R.drawable.perrito,
+                        getString(R.string.perrito_detalle)));
+        */
+
+        //solo para demostrar///
+
         listaMascotas.add(new Mascota("Firulais","Perro","Trujillo", R.drawable.perrito, "Es un perrro bonito"));
         listaMascotas.add(new Mascota("Perales","Perro","Lima",R.drawable.perrito2, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Chistris","Perro","Lambayeque",R.drawable.perrito3, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Rambo","Perro","Trujillo",R.drawable.perrito4, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Pompon","Conejo","Trujillo",R.drawable.conejitos, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Chasqui","Cuy","Cajamarca",R.drawable.cuy, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Ranses","Gato","Trujillo",R.drawable.gatito, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Micho","Gato","Trujillo",R.drawable.gatito2, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("El machito","Gato","Lima",R.drawable.gatito3, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Fuerza G","Hamster","Trujillo",R.drawable.hamster, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Piolin","Ave","Trujillo",R.drawable.lorito, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Volador","Ave","Trujillo",R.drawable.lorito2, "Es un perro bonito"));
-        listaMascotas.add(new Mascota("Paco","Ave","Trujillo",R.drawable.lorito3, "Es un perro bonito"));
-        */
+        listaMascotas.add(new Mascota("Pompon","Conejo","Trujillo",R.drawable.conejitos, "Es un conejo bonito"));
+        listaMascotas.add(new Mascota("Chasqui","Cuy","Cajamarca",R.drawable.cuy, "Es un cuy bonito"));
+        listaMascotas.add(new Mascota("Ranses","Gato","Trujillo",R.drawable.gatito, "Es un gato bonito"));
+        listaMascotas.add(new Mascota("Micho","Gato","Trujillo",R.drawable.gatito2, "Es un gato bonito"));
+        listaMascotas.add(new Mascota("El machito","Gato","Lima",R.drawable.gatito3, "Es un gato bonito"));
+        listaMascotas.add(new Mascota("Fuerza G","Hamster","Trujillo",R.drawable.hamster, "Es un hamster bonito"));
+        listaMascotas.add(new Mascota("Piolin","Ave","Trujillo",R.drawable.lorito, "Es un pajarito bonito"));
+        listaMascotas.add(new Mascota("Volador","Ave","Trujillo",R.drawable.lorito2, "Es un pajarito bonito"));
+        listaMascotas.add(new Mascota("Paco","Ave","Trujillo",R.drawable.lorito3, "Es un pajarito bonito"));
+
 
     }
 
