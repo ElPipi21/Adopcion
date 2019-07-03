@@ -98,7 +98,6 @@ public class FragmentContenedor extends Fragment {
         }
 
 
-
         return vista;
     }
 
