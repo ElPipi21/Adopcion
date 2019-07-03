@@ -155,7 +155,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnContactar"
+        android:id="@+id/btnHacerDonacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contactarnos" />

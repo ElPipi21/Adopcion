@@ -4,12 +4,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,6 +107,7 @@ public class FragmentContenedor extends Fragment {
         adapter.addFragment(new FragmentListarMascotas(), "MASCOTAS");
         adapter.addFragment(new FragmentFavoritos(), "FAVORITOS");
         adapter.addFragment(new FragmentDonaciones(), "DONACIONES");
+        adapter.addFragment(new FragmentLlenarFormulario(), "FORMULARIO DE ADOPCION");
 
         viewPager.setAdapter(adapter);
     }

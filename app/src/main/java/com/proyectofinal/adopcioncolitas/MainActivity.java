@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity
             miFragment = new FragmentContenedor();
             fragmentSeleccionado=true;
 
-        } else if (id == R.id.nav_send) {
         }
 
         if(fragmentSeleccionado==true){
