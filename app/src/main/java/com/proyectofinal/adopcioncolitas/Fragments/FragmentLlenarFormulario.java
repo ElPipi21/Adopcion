@@ -4,11 +4,23 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.proyectofinal.adopcioncolitas.R;
+
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +30,7 @@ import com.proyectofinal.adopcioncolitas.R;
  * Use the {@link FragmentLlenarFormulario#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentLlenarFormulario extends Fragment {
+public class FragmentLlenarFormulario extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +41,18 @@ public class FragmentLlenarFormulario extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+    EditText txtNombreForm, txtApellidoForm, txtCorreoForm, txtTelefForm, txtDirecForm;
+    Button btnSolicitarAdopcion;
+
+
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+
+
+
+
 
     public FragmentLlenarFormulario() {
         // Required empty public constructor
@@ -65,7 +89,44 @@ public class FragmentLlenarFormulario extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_llenar_formulario, container, false);
+        View vista= inflater.inflate(R.layout.fragment_fragment_llenar_formulario, container, false);
+        txtNombreForm= (EditText) vista.findViewById(R.id.editNombreForm);
+        txtApellidoForm= (EditText) vista.findViewById(R.id.editApellidoForm);
+        txtCorreoForm= (EditText) vista.findViewById(R.id.editCorreoForm);
+        txtTelefForm= (EditText) vista.findViewById(R.id.editTelefonoForm);
+        txtDirecForm= (EditText) vista.findViewById(R.id.editDireccionForm);
+        btnSolicitarAdopcion= vista.findViewById(R.id.btnRealizarAdopcion);
+
+        request= Volley.newRequestQueue(getContext());
+
+        btnSolicitarAdopcion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarWebService();
+
+            }
+
+        });
+
+
+        return vista;
+    }
+
+    private void cargarWebService() {
+        String url= "http://u881524204.hostingerapp.com/WEBSERVICE/Colitas/RealizarAdopcion.php?id_mascota=1"
+                +"&Nombres="+txtNombreForm.getText().toString()
+                +"&Apellidos="+txtApellidoForm.getText().toString()
+                +"&Correo="+txtCorreoForm.getText().toString()
+                +"&Telefono="+txtTelefForm.getText().toString()
+                +"&Direccion="+txtDirecForm.getText().toString();
+
+
+        //url= url.replace("", "%20");
+
+        jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url, null,this, this);
+        request.add(jsonObjectRequest);
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,6 +151,24 @@ public class FragmentLlenarFormulario extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se pudo realizar la solicitud de adopcion"+error.toString(), Toast.LENGTH_SHORT).show();
+        Log.i("ERROR", error.toString());
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Toast.makeText(getContext(), "Se ha realizado la solicitud de adopcion correctamente, MUCHAS GRACIAS", Toast.LENGTH_SHORT).show();
+        txtNombreForm.setText("");
+        txtApellidoForm.setText("");
+        txtCorreoForm.setText("");
+        txtTelefForm.setText("");
+        txtDirecForm.setText("");
+
+
     }
 
     /**
