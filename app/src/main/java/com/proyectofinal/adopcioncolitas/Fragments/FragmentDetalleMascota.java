@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +36,11 @@ public class FragmentDetalleMascota extends Fragment {
 
     TextView  textDescripcion;
     ImageView imagenDetalle;
+
+    Button btnAdoptar;
+    Button btnDonar;
+
+    View vista;
 
     public FragmentDetalleMascota() {
         // Required empty public constructor
@@ -68,13 +74,18 @@ public class FragmentDetalleMascota extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View vista=inflater.inflate(R.layout.fragment_fragment_detalle_mascota, container, false);
         textDescripcion= vista.findViewById(R.id.descripcionId);
         imagenDetalle = vista.findViewById(R.id.imagenDetalleId);
+
+        ////////////////////////
+        btnAdoptar= vista.findViewById(R.id.btnAdoptar);
+        btnDonar = vista.findViewById(R.id.btnDonar);
+        ///////////////////////
 
         Bundle objetoMascota=getArguments();
         Mascota mascota= null;
@@ -83,6 +94,8 @@ public class FragmentDetalleMascota extends Fragment {
             mascota=(Mascota) objetoMascota.getSerializable("objeto");
             imagenDetalle.setImageResource(mascota.getImagenId());
             textDescripcion.setText(mascota.getDetalle());
+
+
         }
 
 
@@ -112,6 +125,10 @@ public class FragmentDetalleMascota extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
+
+
 
     /**
      * This interface must be implemented by activities that contain this

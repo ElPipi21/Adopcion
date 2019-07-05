@@ -35,14 +35,18 @@
                 android:id="@+id/btnAdoptar"
                 android:layout_width="214dp"
                 android:layout_height="wrap_content"
-                android:text="ADOPTAME :3" />
+                android:text="ADOPTAME :3"
+                android:onClick="onClick"
+                />
 
             <Button
                 android:id="@+id/btnDonar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DONAR" />
+                android:text="DONAR"
+                android:onClick="onClick"
+                />
         </LinearLayout>
     </LinearLayout>
 

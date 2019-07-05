@@ -62,7 +62,8 @@
                 android:layout_width="108dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                card_view:srcCompat="@drawable/corazon" />
+                card_view:srcCompat="@drawable/corazon"
+                android:onClick="onClick"/>
 
         </LinearLayout>
 
