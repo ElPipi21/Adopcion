@@ -119,7 +119,7 @@ public class FragmentListarMascotas extends Fragment {
         */
 
         //solo para demostrar///
-
+        /*
         listaMascotas.add(new Mascota("Firulais","Perro","Trujillo", R.drawable.perrito, "Es un perrro bonito"));
         listaMascotas.add(new Mascota("Perales","Perro","Lima",R.drawable.perrito2, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Chistris","Perro","Lambayeque",R.drawable.perrito3, "Es un perro bonito"));
@@ -133,7 +133,7 @@ public class FragmentListarMascotas extends Fragment {
         listaMascotas.add(new Mascota("Piolin","Ave","Trujillo",R.drawable.lorito, "Es un pajarito bonito"));
         listaMascotas.add(new Mascota("Volador","Ave","Trujillo",R.drawable.lorito2, "Es un pajarito bonito"));
         listaMascotas.add(new Mascota("Paco","Ave","Trujillo",R.drawable.lorito3, "Es un pajarito bonito"));
-
+        */
     }
 
     // TODO: Rename method, update argument and hook method into UI event

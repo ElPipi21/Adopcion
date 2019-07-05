@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/editNombre"
+                    android:id="@+id/editNombreForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -73,7 +73,7 @@
                      />
 
                 <EditText
-                    android:id="@+id/editApellido"
+                    android:id="@+id/editApellidoForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -81,7 +81,7 @@
                      />
 
                 <EditText
-                    android:id="@+id/editCorreo"
+                    android:id="@+id/editCorreoForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -89,7 +89,7 @@
                      />
 
                 <EditText
-                    android:id="@+id/editTelefono"
+                    android:id="@+id/editTelefonoForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -116,7 +116,7 @@
             android:text="Direccion" />
 
         <EditText
-            android:id="@+id/editDireccion"
+            android:id="@+id/editDireccionForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -130,7 +130,7 @@
         android:id="@+id/btnRealizarAdopcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Solicitar Adopcion" />
 
 
 </LinearLayout>
