@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
     FragmentDonaciones donacionesFragment;
     FragmentLlenarFormulario llenarFormularioFragment;
     FragmentFavoritos favoritosFragment;
+    FragmentContenedor contenedorFragment;
 
 
 

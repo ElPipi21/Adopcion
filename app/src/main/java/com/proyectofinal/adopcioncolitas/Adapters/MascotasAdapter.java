@@ -31,10 +31,14 @@ public class MascotasAdapter extends RecyclerView.Adapter<MascotasAdapter.Mascot
 
     @Override
     public void onBindViewHolder(MascotaViewHolder holder, int position) {
+
+
+
         holder.txtNombre.setText(listaMascota.get(position).getNombre());
         holder.txtEspecie.setText(listaMascota.get(position).getEspecie());
         holder.txtCiudad.setText(listaMascota.get(position).getCiudad());
         holder.foto.setImageResource(listaMascota.get(position).getImagenId());
+
 
     }
 
