@@ -105,12 +105,7 @@ public class FragmentDonaciones extends Fragment implements Response.Listener<JS
                 
             }
 
-
         });
-
-
-
-
 
 
         return vista;
@@ -131,7 +126,6 @@ public class FragmentDonaciones extends Fragment implements Response.Listener<JS
         request.add(jsonObjectRequest);
 
     }
-
 
     //////////////////////////
 

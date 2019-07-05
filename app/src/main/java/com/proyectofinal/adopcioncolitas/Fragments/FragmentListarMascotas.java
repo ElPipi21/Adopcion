@@ -7,26 +7,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.proyectofinal.adopcioncolitas.Adapters.MascotasAdapter;
 import com.proyectofinal.adopcioncolitas.Clases.Mascota;
 import com.proyectofinal.adopcioncolitas.R;
 import com.proyectofinal.adopcioncolitas.interfaces.IComunicaFragments;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -39,7 +28,7 @@ import java.util.ArrayList;
  * Use the {@link FragmentListarMascotas#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentListarMascotas extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
+public class FragmentListarMascotas extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,11 +46,6 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
     Activity activity;
     IComunicaFragments interfaceComunicaFragments;
 
-    ////////////
-    RequestQueue request;
-    JsonObjectRequest jsonObjectRequest;
-
-    ///////////
 
 
     public FragmentListarMascotas() {
@@ -99,21 +83,12 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View vista= inflater.inflate(R.layout.fragment_fragment_listar_mascotas, container, false);
-
-
         listaMascotas= new ArrayList<>();
         recyclerMascotas=vista.findViewById(R.id.recyclerId);
         recyclerMascotas.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerMascotas.setHasFixedSize(true);
-
-        request = Volley.newRequestQueue(getContext());
-        
-        cargarWebService();
-
-
         
         ////////no quitar////
-        /*
+
         llenarLista();
 
         MascotasAdapter adapter = new MascotasAdapter(listaMascotas);
@@ -130,21 +105,11 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
 
             }
         });
-        */
-        
-        
+
         
         return vista;
     }
 
-    private void cargarWebService() {
-        String url= "http://u881524204.hostingerapp.com/WEBSERVICE/Colitas/ListarMascotas.php";
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this,this);
-        request.add(jsonObjectRequest);
-
-
-
-    }
 
 
     private void llenarLista() {
@@ -160,7 +125,7 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
         */
 
         //solo para demostrar///
-        /*
+
         listaMascotas.add(new Mascota("Firulais","Perro","Trujillo", R.drawable.perrito, "Es un perrro bonito"));
         listaMascotas.add(new Mascota("Perales","Perro","Lima",R.drawable.perrito2, "Es un perro bonito"));
         listaMascotas.add(new Mascota("Chistris","Perro","Lambayeque",R.drawable.perrito3, "Es un perro bonito"));
@@ -174,7 +139,7 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
         listaMascotas.add(new Mascota("Piolin","Ave","Trujillo",R.drawable.lorito, "Es un pajarito bonito"));
         listaMascotas.add(new Mascota("Volador","Ave","Trujillo",R.drawable.lorito2, "Es un pajarito bonito"));
         listaMascotas.add(new Mascota("Paco","Ave","Trujillo",R.drawable.lorito3, "Es un pajarito bonito"));
-        */
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -208,44 +173,7 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
         mListener = null;
     }
 
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(), "No se puede conectar" +error.toString(),Toast.LENGTH_LONG).show();;
-        System.out.println();
-        Log.d("ERROR", error.toString());
-    }
 
-    @Override
-    public void onResponse(JSONObject response) {
-        Mascota mascota;
-        JSONArray json= response.optJSONArray("Mascotas");
-
-            try {
-
-                for(int i=0; i<json.length(); i++){
-                    mascota= new Mascota();
-                    JSONObject jsonObject=null;
-                    jsonObject = json.getJSONObject(i);
-
-
-                    mascota.setNombre(jsonObject.getString("nombre"));
-                    mascota.setEspecie(jsonObject.getString("especie"));
-                    mascota.setCiudad(jsonObject.getString("ciudad"));
-                    mascota.setDetalle(jsonObject.getString("detalle"));
-
-                    listaMascotas.add(mascota);
-            }
-                MascotasAdapter adapter= new MascotasAdapter(listaMascotas);
-                recyclerMascotas.setAdapter(adapter);
-
-            }catch (JSONException e){
-                e.printStackTrace();
-                Toast.makeText(getContext(), "No se ha podido establecer conexion con el servidor"
-                        +""+response, Toast.LENGTH_LONG).show();
-
-        }
-
-    }
 
 
 
