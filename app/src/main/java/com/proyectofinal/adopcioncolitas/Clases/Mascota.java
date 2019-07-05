@@ -49,7 +49,7 @@ public class Mascota implements Serializable {
         this.detalle = detalle;
     }
 
-    public Mascota(String nombre, String especie, String ciudad, int imagenId, String detalle) {
+    public Mascota() {
         this.nombre = nombre;
         this.especie = especie;
         this.ciudad = ciudad;
