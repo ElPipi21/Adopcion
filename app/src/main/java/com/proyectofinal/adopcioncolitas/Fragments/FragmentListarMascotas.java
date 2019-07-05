@@ -110,21 +110,6 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
         
         cargarWebService();
 
-        MascotasAdapter adapter = new MascotasAdapter(listaMascotas);
-        recyclerMascotas.setAdapter(adapter);
-
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Selecciona: "
-                        +listaMascotas.get(recyclerMascotas
-                        .getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
-
-                interfaceComunicaFragments.enviarMascota(listaMascotas.get(recyclerMascotas.getChildAdapterPosition(view)));
-
-            }
-        });
-
 
         
         ////////no quitar////
@@ -156,6 +141,8 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
         String url= "http://u881524204.hostingerapp.com/WEBSERVICE/Colitas/ListarMascotas.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this,this);
         request.add(jsonObjectRequest);
+
+
 
     }
 
@@ -244,6 +231,7 @@ public class FragmentListarMascotas extends Fragment implements Response.ErrorLi
                     mascota.setNombre(jsonObject.getString("nombre"));
                     mascota.setEspecie(jsonObject.getString("especie"));
                     mascota.setCiudad(jsonObject.getString("ciudad"));
+                    mascota.setDetalle(jsonObject.getString("detalle"));
 
                     listaMascotas.add(mascota);
             }
